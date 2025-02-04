@@ -1,25 +1,109 @@
 Program Name:
 
 Program Description:
+Have you played rock, paper, scissors before? If not, here are the rules! A player and the computer will choose either rock, paper, or scissors. To determine the winner, rock beats scissors, scissors beat paper, and paper beats rock. If they choose the same item, it is a tie!
 
+
+
+Generate a random number 0 to 2 for the computer’s play. 0 = Rock, 1 = Paper, 2 = Scissors. Seed the random number generator prior to generating the number.
+
+Prompt the user for their name as a string. Their name may include spaces.
+
+Prompt the user for their play as a char. Valid inputs are R, P, or S, case insensitive (r, p, s must also work).
+
+If the user enters an invalid play, print an error and end the game.
+
+If a valid play is entered, determine the winner (see above). Hint: You may want to convert the computer play to R, P, or S for comparing.
 
 Design:
 A. INPUT
-Define the input variables including name data type. 
+string name = ""; 
+char userPlay = '\0';
 
 B. OUTPUT
-Define the output variables including data types. 
+char computerPlay = '\0';
 
 C. CALCULATIONS
-Describe calculations used by algorithms in step D.  
-List all formulas. 
-If there are no calculations needed, state there are no calculations.
+computerPlay = RANDOM IN ('r', 'p', 's')
+
+enum {TIE = 0, USER_WIN = 1, COMPUTER_WIN = 2};
+int gameStatus = TIE; 
+
+IF computerPlay == userPlay 
+    gameStatus = TIE;
+ELSE IF computerPlay == 'r' 
+    gameStatus = userPlay == 'p' ? USER_WIN : COMPUTER_WIN;
+ELSE IF computerPlay == 'p'
+    gameStatus = userPlay == 's' ? USER_WIN : COMPUTER_WIN;
+ELSE COMPUTER PLAY IS 's'
+    gameStatus = userPlay == 'r' ? USER_WIN : COMPUTER_WIN;
+
 
 D. LOGIC and ALGORITHMS
-Design the logic of your program using pseudocode or flowcharts. 
-Use conditionals, loops, functions or array constructs.
-List the steps in transforming inputs into outputs. 
+MESSAGE "Welcome to the Rock Paper Scissors Game!"
+
+PROMPT "Enter player name: "
+INPUT name
+
+PROMPT "What is your play [NAME]?"
+PROMPT "Enter r, p, or s: "
+INPUT  userPlay
+
+IF userPlay is not valid
+    MESSAGE "Invalid play."
+    MESSAGE "Run the program again!"
+    END PROGRAM
+END IF
+
+calculate results
+
+LABEL "Computer plays "
+DATA computerPlay
+
+switch gameStatus
+TIE
+    MESSAGE "It's a tie!"
+
+USER_WIN
+    MESSAGE "[NAME] wins!"
+
+COMPUTER_WIN
+    MESSAGE "Computer wins!"
+
+MESSAGE "Thank you for playing!"
 
 
 SAMPLE RUNS
-Copy from assignment document.
+Welcome to the Rock Paper Scissors Game!
+Enter player name: Mario
+What is your play Mario?
+Enter r, p, or s: c
+Invalid play.
+Run the program again!
+
+
+Welcome to the Rock Paper Scissors Game!
+Enter player name: Sonic
+What is your play Sonic?
+Enter r, p, or s: P
+Computer plays P
+It's a tie!
+Thank you for playing!
+
+
+Welcome to the Rock Paper Scissors Game!
+Enter player name: Mario
+What is your play Mario?
+Enter r, p, or s: R
+Computer plays P
+Computer wins!
+Thank you for playing!
+
+
+Welcome to the Rock Paper Scissors Game!
+Enter player name: Samus
+What is your play Samus?
+Enter r, p, or s: R
+Computer plays S
+Samus wins!
+Thank you for playing!
